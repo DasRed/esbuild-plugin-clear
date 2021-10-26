@@ -1,6 +1,6 @@
 {
     "name": "esbuild-plugin-clear",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "a clear plugin for esbuild",
     "main": "./src/index.js",
     "type": "module",
