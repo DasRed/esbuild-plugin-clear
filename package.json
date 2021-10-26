@@ -1,0 +1,25 @@
+{
+    "name": "esbuild-plugin-clear",
+    "version": "1.0.0",
+    "description": "a clear plugin for esbuild",
+    "main": "./src/index.js",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DasRed/esbuild-plugin-clear.git"
+    },
+    "author": "Marco Starker",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DasRed/esbuild-plugin-clear/issues"
+    },
+    "files": [
+        "/src/*"
+    ],
+    "homepage": "https://github.com/DasRed/esbuild-plugin-clear#readme",
+    "keywords": [
+        "esbuild",
+        "plugin",
+        "clear"
+    ]
+}
