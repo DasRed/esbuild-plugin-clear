@@ -1,6 +1,6 @@
 ---
 title: Optionen
-description: Der einzige Parameter von esbuild-plugin-clear, sein Verhalten und die bekannten Grenzen.
+description: Der Parameter path von esbuild-plugin-clear, wann und wie der Ordner vor dem esbuild-Build gelöscht wird und welche Einschränkungen du kennen solltest.
 order: 30
 slug: optionen
 section: Referenz

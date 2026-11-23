@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: esbuild plugin that deletes a folder before every build so no stale files are left in the output directory.
+description: esbuild-plugin-clear deletes a folder before every esbuild build so no stale files are left in the output directory. Quick example, behaviour and status.
 order: 0
 section: Getting started
 ---

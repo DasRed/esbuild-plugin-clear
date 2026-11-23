@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: esbuild-plugin-clear per npm installieren, Voraussetzungen an Node.js und esbuild.
+description: esbuild-plugin-clear per npm als Dev-Abhängigkeit installieren und welche Versionen von Node.js und esbuild du brauchst, damit das Löschen vor dem Build klappt.
 order: 10
 slug: installation
 section: Einstieg

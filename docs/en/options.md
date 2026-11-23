@@ -1,6 +1,6 @@
 ---
 title: Options
-description: The single parameter of esbuild-plugin-clear, its behaviour and the known limitations.
+description: The path parameter of esbuild-plugin-clear, when and how the folder is deleted before the esbuild build starts and which limitations you should know about.
 order: 30
 slug: options
 section: Reference
