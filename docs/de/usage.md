@@ -1,14 +1,14 @@
 ---
 title: Verwendung
-description: Typische Einsätze von esbuild-plugin-clear – Ausgabeordner leeren, Watch-Modus, mehrere Builds und Kombination mit copy.
+description: Typische Einsätze von esbuild-plugin-clear: Ausgabeordner leeren, eigener Pfad, Watch-Modus, mehrere Builds, Monorepos und Kombination mit copy.
 order: 20
 slug: verwendung
 section: Einstieg
 ---
 
-## Ausgabeordner vor dem Build leeren
+## Ausgabeordner leeren
 
-Gib dem Plugin den Ordner, in den esbuild schreibt:
+Ohne Argument leert das Plugin den Ausgabeordner des Builds: `outdir` oder den Ordner von `outfile`.
 
 ```js
 import esbuild from 'esbuild';
@@ -19,12 +19,21 @@ await esbuild.build({
     bundle:      true,
     outdir:      './dist',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 ```
 
-Das Plugin funktioniert mit `outfile` und mit `outdir`, denn es kennt nur den Pfad, den du ihm gibst.
+## Einen anderen Pfad leeren
+
+Gib einen Pfad an, wenn du etwas anderes löschen willst, zum Beispiel nur einen Unterordner der Ausgabe:
+
+```js
+clear('./dist/assets')
+```
+
+Der Pfad gilt relativ zu `absWorkingDir` des Builds. Ohne `absWorkingDir` gilt er relativ zum Ordner, aus dem du den
+Build startest.
 
 ## Zusammen mit esbuild-plugin-copy
 
@@ -40,7 +49,7 @@ await esbuild.build({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
         copy({from: './public', to: '.'}),
     ],
 });
@@ -57,7 +66,7 @@ await esbuild.build({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 
@@ -67,6 +76,17 @@ await esbuild.build({
     outfile:     './dist/worker.js',
 });
 ```
+
+## Ausgabe außerhalb des Projekts
+
+In einem Monorepo liegt die Ausgabe oft neben dem Paket, etwa in `../server/public/app`. Solche Pfade lehnt das
+Plugin ab, solange du sie nicht erlaubst:
+
+```js
+clear({path: '../server/public/app', allowOutsideWorkingDir: true})
+```
+
+Auch dann löscht es nie den Arbeitsordner oder einen seiner Elternordner.
 
 ## Watch-Modus
 
@@ -80,7 +100,7 @@ const ctx = await esbuild.context({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 

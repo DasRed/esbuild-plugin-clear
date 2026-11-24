@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Install esbuild-plugin-clear via npm as a dev dependency and which versions of Node.js and esbuild you need so the folder is cleared before each build.
+description: Install esbuild-plugin-clear via npm as a dev dependency, which versions of Node.js and esbuild you need and how to import it as ESM, CommonJS or TypeScript.
 order: 10
 slug: installation
 section: Getting started
@@ -14,7 +14,7 @@ You only need the plugin at build time, so add it as a dev dependency.
 npm i -D esbuild-plugin-clear
 ```
 
-The plugin does not ship esbuild. If it is missing:
+esbuild is a peer dependency. If it is missing:
 
 ```bash
 npm i -D esbuild
@@ -22,11 +22,32 @@ npm i -D esbuild
 
 ## Requirements
 
-| What    | Version         | Why                                                        |
-|---------|-----------------|------------------------------------------------------------|
-| Node.js | 14.14 or later  | The plugin deletes with `fs.rmSync`, available since 14.14 |
-| esbuild | with plugin API | Tested with 0.28; only `onStart` is used                   |
+| What    | Version         | Why                                                       |
+|---------|-----------------|-----------------------------------------------------------|
+| Node.js | 22.13 or later  | Minimum in `engines`, the oldest supported LTS line       |
+| esbuild | 0.19 or later   | Peer dependency, tested with 0.28; only `onStart` is used |
 
-> [!NOTE]
-> The package is pure ESM with a single default export. Write your build script as `.mjs` or set `"type": "module"`
-> in your `package.json`.
+The package has no runtime dependencies.
+
+## Import
+
+The package ships as ES module and as CommonJS, each with its own type definitions.
+
+```js
+import clear from 'esbuild-plugin-clear';
+```
+
+```js
+const clear = require('esbuild-plugin-clear').default;
+```
+
+In CommonJS the default export sits in `.default`, next to the type exports. TypeScript and bundlers handle
+`import … from` for you.
+
+In TypeScript the options type is available as a named type export:
+
+```ts
+import clear, {type ClearPluginOptionInterface} from 'esbuild-plugin-clear';
+
+const options: ClearPluginOptionInterface = {path: './dist'};
+```

@@ -1,14 +1,14 @@
 ---
 title: Usage
-description: Typical uses of esbuild-plugin-clear – clearing the output folder, watch mode, several builds and combining it with copy.
+description: Typical uses of esbuild-plugin-clear: clearing the output folder, an explicit path, watch mode, several builds, monorepos and esbuild-plugin-copy.
 order: 20
 slug: usage
 section: Getting started
 ---
 
-## Clear the output folder before the build
+## Clear the output folder
 
-Pass the folder esbuild writes to:
+Without arguments the plugin clears the output folder of the build: `outdir`, or the folder of `outfile`.
 
 ```js
 import esbuild from 'esbuild';
@@ -19,12 +19,21 @@ await esbuild.build({
     bundle:      true,
     outdir:      './dist',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 ```
 
-The plugin works with `outfile` and with `outdir`, because it only knows the path you give it.
+## Clear another path
+
+Pass a path if you want to delete something else, e.g. only a subfolder of the output:
+
+```js
+clear('./dist/assets')
+```
+
+The path is resolved relative to `absWorkingDir` of the build. Without `absWorkingDir` it is relative to the folder
+you start the build from.
 
 ## Together with esbuild-plugin-copy
 
@@ -40,7 +49,7 @@ await esbuild.build({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
         copy({from: './public', to: '.'}),
     ],
 });
@@ -57,7 +66,7 @@ await esbuild.build({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 
@@ -67,6 +76,17 @@ await esbuild.build({
     outfile:     './dist/worker.js',
 });
 ```
+
+## Output outside the project
+
+In a monorepo the output often lives next to the package, e.g. `../server/public/app`. The plugin refuses such paths
+unless you allow them:
+
+```js
+clear({path: '../server/public/app', allowOutsideWorkingDir: true})
+```
+
+Even then it never deletes the working directory or one of its parents.
 
 ## Watch mode
 
@@ -80,7 +100,7 @@ const ctx = await esbuild.context({
     bundle:      true,
     outfile:     './dist/index.js',
     plugins:     [
-        clear('./dist'),
+        clear(),
     ],
 });
 
