@@ -1,6 +1,6 @@
 {
     "name": "esbuild-plugin-clear",
-    "version": "1.0.3",
+    "version": "2.0.0",
     "description": "esbuild plugin that deletes the output folder before every build",
     "type": "module",
     "author": "Marco Starker",

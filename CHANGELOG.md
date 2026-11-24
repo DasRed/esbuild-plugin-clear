@@ -1,3 +1,13 @@
+## [2.0.0](https://github.com/DasRed/esbuild-plugin-clear/compare/v1.0.3...v2.0.0) (2026-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* clear('.') and paths outside the working directory now fail the build, relative paths resolve against absWorkingDir, the plugin is named "clear", CommonJS exposes the default export as require(…).default and Node.js >=22.13.0 is required.
+
+### Features
+
+* rewrite in TypeScript with ESM/CJS builds, types and safety checks ([9098cf4](https://github.com/DasRed/esbuild-plugin-clear/commit/9098cf4e22e3269227e3b8950fbc899cb8044103))
+
 ## [1.0.3](https://github.com/DasRed/esbuild-plugin-clear/compare/v1.0.2...v1.0.3) (2026-11-24)
 
 ### Bug Fixes
