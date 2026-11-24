@@ -16,7 +16,7 @@
     "files": [
         "/src/*"
     ],
-    "homepage": "https://github.com/DasRed/esbuild-plugin-clear#readme",
+    "homepage": "https://www.marco-starker.de/en/projects/esbuild-plugin-clear/docs",
     "keywords": [
         "esbuild",
         "plugin",
