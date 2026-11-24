@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/DasRed/esbuild-plugin-clear/compare/v1.0.2...v1.0.3) (2026-11-24)
+
+### Bug Fixes
+
+* homepage fixed ([3aafc02](https://github.com/DasRed/esbuild-plugin-clear/commit/3aafc02abcbe97246a75a1e5cd1a7ce1004795c3))
+
 ## [1.0.2](https://github.com/DasRed/esbuild-plugin-clear/compare/v1.0.1...v1.0.2) (2026-11-24)
 
 ### Bug Fixes
